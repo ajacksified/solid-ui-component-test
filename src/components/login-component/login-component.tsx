@@ -1,7 +1,7 @@
 import {Component, Prop, State, Element, Listen} from '@stencil/core';
-import { auth } from 'solid-auth-client';
 // @ts-ignore
 declare let $rdf: any;
+declare let solid: any;
 // @ts-ignore
 const store  = $rdf.graph();
 const fetcher = new $rdf.Fetcher(store);
@@ -25,7 +25,7 @@ export class LoginComponent {
   async login() {
     if (this.loginProvider) {
       try {
-        await auth.login(this.loginProvider, {
+        await solid.auth.login(this.loginProvider, {
           storage: localStorage
         });
       } catch (err) {
