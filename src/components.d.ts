@@ -12,6 +12,14 @@ import '@stencil/core';
 
 export namespace Components {
 
+  interface SolidLogin {}
+  interface SolidLoginAttributes extends StencilHTMLAttributes {}
+
+  interface SolidProviderSelect {}
+  interface SolidProviderSelectAttributes extends StencilHTMLAttributes {
+    'onProviderChanged'?: (event: CustomEvent) => void;
+  }
+
   interface MyComponent {
     'first': string;
     'last': string;
@@ -22,6 +30,9 @@ export namespace Components {
     'last'?: string;
     'middle'?: string;
   }
+
+  interface SolidForm {}
+  interface SolidFormAttributes extends StencilHTMLAttributes {}
 
   interface PostCreate {
     'webid': string;
@@ -40,22 +51,46 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
+    'SolidLogin': Components.SolidLogin;
+    'SolidProviderSelect': Components.SolidProviderSelect;
     'MyComponent': Components.MyComponent;
+    'SolidForm': Components.SolidForm;
     'PostCreate': Components.PostCreate;
     'PostList': Components.PostList;
   }
 
   interface StencilIntrinsicElements {
+    'solid-login': Components.SolidLoginAttributes;
+    'solid-provider-select': Components.SolidProviderSelectAttributes;
     'my-component': Components.MyComponentAttributes;
+    'solid-form': Components.SolidFormAttributes;
     'post-create': Components.PostCreateAttributes;
     'post-list': Components.PostListAttributes;
   }
 
 
+  interface HTMLSolidLoginElement extends Components.SolidLogin, HTMLStencilElement {}
+  var HTMLSolidLoginElement: {
+    prototype: HTMLSolidLoginElement;
+    new (): HTMLSolidLoginElement;
+  };
+
+  interface HTMLSolidProviderSelectElement extends Components.SolidProviderSelect, HTMLStencilElement {}
+  var HTMLSolidProviderSelectElement: {
+    prototype: HTMLSolidProviderSelectElement;
+    new (): HTMLSolidProviderSelectElement;
+  };
+
   interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
   var HTMLMyComponentElement: {
     prototype: HTMLMyComponentElement;
     new (): HTMLMyComponentElement;
+  };
+
+  interface HTMLSolidFormElement extends Components.SolidForm, HTMLStencilElement {}
+  var HTMLSolidFormElement: {
+    prototype: HTMLSolidFormElement;
+    new (): HTMLSolidFormElement;
   };
 
   interface HTMLPostCreateElement extends Components.PostCreate, HTMLStencilElement {}
@@ -71,13 +106,19 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
+    'solid-login': HTMLSolidLoginElement
+    'solid-provider-select': HTMLSolidProviderSelectElement
     'my-component': HTMLMyComponentElement
+    'solid-form': HTMLSolidFormElement
     'post-create': HTMLPostCreateElement
     'post-list': HTMLPostListElement
   }
 
   interface ElementTagNameMap {
+    'solid-login': HTMLSolidLoginElement;
+    'solid-provider-select': HTMLSolidProviderSelectElement;
     'my-component': HTMLMyComponentElement;
+    'solid-form': HTMLSolidFormElement;
     'post-create': HTMLPostCreateElement;
     'post-list': HTMLPostListElement;
   }
