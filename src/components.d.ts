@@ -31,17 +31,6 @@ export namespace Components {
     'onProviderChanged'?: (event: CustomEvent) => void;
   }
 
-  interface MyComponent {
-    'first': string;
-    'last': string;
-    'middle': string;
-  }
-  interface MyComponentAttributes extends StencilHTMLAttributes {
-    'first'?: string;
-    'last'?: string;
-    'middle'?: string;
-  }
-
   interface SolidForm {}
   interface SolidFormAttributes extends StencilHTMLAttributes {}
 
@@ -65,7 +54,6 @@ declare global {
     'SolidLoginPopup': Components.SolidLoginPopup;
     'SolidLogin': Components.SolidLogin;
     'SolidProviderSelect': Components.SolidProviderSelect;
-    'MyComponent': Components.MyComponent;
     'SolidForm': Components.SolidForm;
     'PostCreate': Components.PostCreate;
     'PostList': Components.PostList;
@@ -75,7 +63,6 @@ declare global {
     'solid-login-popup': Components.SolidLoginPopupAttributes;
     'solid-login': Components.SolidLoginAttributes;
     'solid-provider-select': Components.SolidProviderSelectAttributes;
-    'my-component': Components.MyComponentAttributes;
     'solid-form': Components.SolidFormAttributes;
     'post-create': Components.PostCreateAttributes;
     'post-list': Components.PostListAttributes;
@@ -100,12 +87,6 @@ declare global {
     new (): HTMLSolidProviderSelectElement;
   };
 
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
-  };
-
   interface HTMLSolidFormElement extends Components.SolidForm, HTMLStencilElement {}
   var HTMLSolidFormElement: {
     prototype: HTMLSolidFormElement;
@@ -128,7 +109,6 @@ declare global {
     'solid-login-popup': HTMLSolidLoginPopupElement
     'solid-login': HTMLSolidLoginElement
     'solid-provider-select': HTMLSolidProviderSelectElement
-    'my-component': HTMLMyComponentElement
     'solid-form': HTMLSolidFormElement
     'post-create': HTMLPostCreateElement
     'post-list': HTMLPostListElement
@@ -138,7 +118,6 @@ declare global {
     'solid-login-popup': HTMLSolidLoginPopupElement;
     'solid-login': HTMLSolidLoginElement;
     'solid-provider-select': HTMLSolidProviderSelectElement;
-    'my-component': HTMLMyComponentElement;
     'solid-form': HTMLSolidFormElement;
     'post-create': HTMLPostCreateElement;
     'post-list': HTMLPostListElement;

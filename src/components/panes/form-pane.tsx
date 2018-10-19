@@ -13,12 +13,11 @@ const fetcher = new $rdf.Fetcher(store);
   styleUrl: 'form-pane.css',
   shadow: false
 })
-export class SolidPaneComponent {
+export class SolidFormPaneComponent {
 
   componentDidLoad() {
   }
 
-  //ToDo: Figure out why null value wasn't working for the "custom" provider
   render() {
     return <div>
 
