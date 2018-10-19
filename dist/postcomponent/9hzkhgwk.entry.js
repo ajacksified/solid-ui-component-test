@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+const{h:e}=window.postcomponent,r=$rdf.graph();new $rdf.Fetcher(r);class t{componentDidLoad(){}render(){return e("div",null)}static get is(){return"solid-form"}static get style(){return""}}export{t as SolidForm};

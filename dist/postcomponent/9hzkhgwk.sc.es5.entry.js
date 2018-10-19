@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+postcomponent.loadBundle("9hzkhgwk",["exports"],function(e){var n=window.postcomponent.h,o=$rdf.graph(),r=(new $rdf.Fetcher(o),function(){function e(){}return e.prototype.componentDidLoad=function(){},e.prototype.render=function(){return n("div",null)},Object.defineProperty(e,"is",{get:function(){return"solid-form"},enumerable:!0,configurable:!0}),Object.defineProperty(e,"style",{get:function(){return""},enumerable:!0,configurable:!0}),e}());e.SolidForm=r,Object.defineProperty(e,"__esModule",{value:!0})});

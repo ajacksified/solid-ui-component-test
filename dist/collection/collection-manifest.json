@@ -1,0 +1,154 @@
+{
+  "components": [
+    {
+      "tag": "post-create",
+      "dependencies": [],
+      "componentClass": "PostComponent",
+      "componentPath": "components/post-component/post-component.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/post-component/post-component.css"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "webid",
+          "type": "String",
+          "attr": "webid"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "post-list",
+      "dependencies": [],
+      "componentClass": "PostListComponent",
+      "componentPath": "components/post-component/post-list.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/post-component/post-component.css"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "webid",
+          "type": "String",
+          "attr": "webid"
+        }
+      ],
+      "states": [
+        {
+          "name": "postList"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      },
+      "shadow": true
+    },
+    {
+      "tag": "solid-form",
+      "dependencies": [],
+      "componentClass": "SolidFormPaneComponent",
+      "componentPath": "components/panes/form-pane.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/panes/form-pane.css"
+          ]
+        }
+      }
+    },
+    {
+      "tag": "solid-login",
+      "dependencies": [
+        "solid-provider-select"
+      ],
+      "componentClass": "LoginComponent",
+      "componentPath": "components/login-component/login-component.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/login-component/login-component.css"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "callback",
+          "type": "String",
+          "attr": "callback"
+        }
+      ],
+      "states": [
+        {
+          "name": "loginProvider"
+        }
+      ],
+      "listeners": [
+        {
+          "event": "providerChanged",
+          "method": "providerChangedHandler",
+          "passive": false,
+          "capture": false
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "solid-login-popup",
+      "dependencies": [],
+      "componentClass": "LoginButton",
+      "componentPath": "components/login-component/LoginButton.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/login-component/login-component.css"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "popup",
+          "type": "String",
+          "attr": "popup"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "solid-provider-select",
+      "dependencies": [],
+      "componentClass": "ProviderSelectComponent",
+      "componentPath": "components/login-component/provider-select.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/login-component/login-component.css"
+          ]
+        }
+      },
+      "states": [
+        {
+          "name": "selectedProvider"
+        }
+      ],
+      "events": [
+        {
+          "event": "providerChanged"
+        }
+      ]
+    }
+  ],
+  "collections": [],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "0.13.2",
+    "typescriptVersion": "2.9.2"
+  },
+  "bundles": []
+}
