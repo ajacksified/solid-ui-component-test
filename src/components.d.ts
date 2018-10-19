@@ -12,8 +12,19 @@ import '@stencil/core';
 
 export namespace Components {
 
-  interface SolidLogin {}
-  interface SolidLoginAttributes extends StencilHTMLAttributes {}
+  interface SolidLoginPopup {
+    'popup': string;
+  }
+  interface SolidLoginPopupAttributes extends StencilHTMLAttributes {
+    'popup'?: string;
+  }
+
+  interface SolidLogin {
+    'callback': string;
+  }
+  interface SolidLoginAttributes extends StencilHTMLAttributes {
+    'callback'?: string;
+  }
 
   interface SolidProviderSelect {}
   interface SolidProviderSelectAttributes extends StencilHTMLAttributes {
@@ -51,6 +62,7 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
+    'SolidLoginPopup': Components.SolidLoginPopup;
     'SolidLogin': Components.SolidLogin;
     'SolidProviderSelect': Components.SolidProviderSelect;
     'MyComponent': Components.MyComponent;
@@ -60,6 +72,7 @@ declare global {
   }
 
   interface StencilIntrinsicElements {
+    'solid-login-popup': Components.SolidLoginPopupAttributes;
     'solid-login': Components.SolidLoginAttributes;
     'solid-provider-select': Components.SolidProviderSelectAttributes;
     'my-component': Components.MyComponentAttributes;
@@ -68,6 +81,12 @@ declare global {
     'post-list': Components.PostListAttributes;
   }
 
+
+  interface HTMLSolidLoginPopupElement extends Components.SolidLoginPopup, HTMLStencilElement {}
+  var HTMLSolidLoginPopupElement: {
+    prototype: HTMLSolidLoginPopupElement;
+    new (): HTMLSolidLoginPopupElement;
+  };
 
   interface HTMLSolidLoginElement extends Components.SolidLogin, HTMLStencilElement {}
   var HTMLSolidLoginElement: {
@@ -106,6 +125,7 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
+    'solid-login-popup': HTMLSolidLoginPopupElement
     'solid-login': HTMLSolidLoginElement
     'solid-provider-select': HTMLSolidProviderSelectElement
     'my-component': HTMLMyComponentElement
@@ -115,6 +135,7 @@ declare global {
   }
 
   interface ElementTagNameMap {
+    'solid-login-popup': HTMLSolidLoginPopupElement;
     'solid-login': HTMLSolidLoginElement;
     'solid-provider-select': HTMLSolidProviderSelectElement;
     'my-component': HTMLMyComponentElement;

@@ -1,12 +1,8 @@
 import {Component, Prop, State, Element, Listen} from '@stencil/core';
+//import auth from 'solid-auth-client';
 // @ts-ignore
-declare let $rdf: any;
 declare let solid: any;
-// @ts-ignore
-const store  = $rdf.graph();
-const fetcher = new $rdf.Fetcher(store);
 
-// @ts-ignore
 
 @Component({
   tag: 'solid-login',
@@ -15,6 +11,7 @@ const fetcher = new $rdf.Fetcher(store);
 })
 export class LoginComponent {
   @State() loginProvider: string;
+  @Prop() callback: string;
 
   @Listen('providerChanged')
   providerChangedHandler(event: CustomEvent) {
@@ -25,9 +22,14 @@ export class LoginComponent {
   async login() {
     if (this.loginProvider) {
       try {
-        await solid.auth.login(this.loginProvider, {
+        let config: any = {
           storage: localStorage
-        });
+        };
+
+        if(this.callback) {
+          config.callbackUri = this.callback;
+        }
+        await solid.auth.login(this.loginProvider, config);
       } catch (err) {
         console.log(err);
       }
