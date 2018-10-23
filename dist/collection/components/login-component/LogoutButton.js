@@ -1,8 +1,11 @@
 import 'solidAuth';
 /** Button that lets the user log in with Solid. */
-export class LoginButton {
-    logout() {
-        solid.auth.logout();
+export class LogoutButton {
+    constructor() {
+        this.logout = async () => {
+            await solid.auth.logout();
+            this.authenticated.emit(null);
+        };
     }
     render() {
         return h("button", { class: "solid-auth-login", onClick: this.logout }, "Log out");
@@ -15,5 +18,12 @@ export class LoginButton {
             "attr": "popup"
         }
     }; }
+    static get events() { return [{
+            "name": "authenticated",
+            "method": "authenticated",
+            "bubbles": true,
+            "cancelable": true,
+            "composed": true
+        }]; }
     static get style() { return "/**style-placeholder:solid-logout-popup:**/"; }
 }

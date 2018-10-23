@@ -1,5 +1,6 @@
 import  'solidAuth';
-import {Component, Prop} from "@stencil/core";
+import {Component, EventEmitter, Prop, Event} from "@stencil/core";
+import {AuthService} from "../../services/auth.service";
 // @ts-ignore
 declare let solid: any;
 
@@ -9,11 +10,13 @@ declare let solid: any;
   styleUrl: 'login-component.css',
   shadow: true
 })
-export class LoginButton {
+export class LogoutButton {
   @Prop() popup: string;
+  @Event() authenticated: EventEmitter;
 
-  logout() {
-    solid.auth.logout();
+  logout = async () => {
+    await solid.auth.logout();
+    this.authenticated.emit(null);
   }
 
   render() {

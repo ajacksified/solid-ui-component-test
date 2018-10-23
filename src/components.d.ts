@@ -12,17 +12,14 @@ import '@stencil/core';
 
 export namespace Components {
 
-  interface SolidAuth {
-    'popup': string;
-  }
-  interface SolidAuthAttributes extends StencilHTMLAttributes {
-    'popup'?: string;
-  }
+  interface SolidAuth {}
+  interface SolidAuthAttributes extends StencilHTMLAttributes {}
 
   interface SolidLoginPopup {
     'popup': string;
   }
   interface SolidLoginPopupAttributes extends StencilHTMLAttributes {
+    'onAuthenticated'?: (event: CustomEvent) => void;
     'popup'?: string;
   }
 
@@ -30,6 +27,7 @@ export namespace Components {
     'popup': string;
   }
   interface SolidLogoutPopupAttributes extends StencilHTMLAttributes {
+    'onAuthenticated'?: (event: CustomEvent) => void;
     'popup'?: string;
   }
 

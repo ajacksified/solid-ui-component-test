@@ -56,7 +56,7 @@
         "solid-login-popup",
         "solid-logout-popup"
       ],
-      "componentClass": "LoginButton",
+      "componentClass": "AuthenticationButton",
       "componentPath": "components/login-component/AuthComponent.js",
       "styles": {
         "$": {
@@ -65,16 +65,20 @@
           ]
         }
       },
-      "props": [
-        {
-          "name": "popup",
-          "type": "String",
-          "attr": "popup"
-        }
-      ],
       "states": [
         {
+          "name": "popup"
+        },
+        {
           "name": "webId"
+        }
+      ],
+      "listeners": [
+        {
+          "event": "authenticated",
+          "method": "authenticationChanged",
+          "passive": false,
+          "capture": false
         }
       ],
       "shadow": true
@@ -147,12 +151,17 @@
           "attr": "popup"
         }
       ],
+      "events": [
+        {
+          "event": "authenticated"
+        }
+      ],
       "shadow": true
     },
     {
       "tag": "solid-logout-popup",
       "dependencies": [],
-      "componentClass": "LoginButton",
+      "componentClass": "LogoutButton",
       "componentPath": "components/login-component/LogoutButton.js",
       "styles": {
         "$": {
@@ -166,6 +175,11 @@
           "name": "popup",
           "type": "String",
           "attr": "popup"
+        }
+      ],
+      "events": [
+        {
+          "event": "authenticated"
         }
       ],
       "shadow": true

@@ -3,14 +3,29 @@ const { h } = window.postcomponent;
 
 import './chunk-04f63265.js';
 
+class AuthService {
+}
+AuthService.isAuthenticated = async () => {
+    const session = await solid.auth.currentSession();
+    return !!session;
+};
+AuthService.getWebId = async () => {
+    const session = await solid.auth.currentSession();
+    if (!session)
+        return null;
+    return session.webId || null;
+};
+
+// @ts-ignore
 /** Button that lets the user log in with Solid. */
-class LoginButton {
-    componentWillLoad() {
-        solid.auth.trackSession(session => {
-            if (session) {
-                this.webId = session.webId;
-            }
-        });
+class AuthenticationButton {
+    async componentWillLoad() {
+        this.webId = await AuthService.getWebId();
+        this.popup = '/assets/popup.html';
+    }
+    authenticationChanged(webId) {
+        console.log(webId.detail);
+        this.webId = webId.detail;
     }
     render() {
         return (h("div", null, !this.webId
@@ -21,20 +36,32 @@ class LoginButton {
     static get encapsulation() { return "shadow"; }
     static get properties() { return {
         "popup": {
-            "type": String,
-            "attr": "popup"
+            "state": true
         },
         "webId": {
             "state": true
         }
     }; }
+    static get listeners() { return [{
+            "name": "authenticated",
+            "method": "authenticationChanged"
+        }]; }
     static get style() { return ""; }
 }
 
 /** Button that lets the user log in with Solid. */
-class LoginButton$1 {
+class LoginButton {
+    constructor() {
+        this.login = async () => {
+            await solid.auth.popupLogin({ popupUri: this.popup });
+            if (AuthService.isAuthenticated()) {
+                const webId = await AuthService.getWebId();
+                this.authenticated.emit(webId);
+            }
+        };
+    }
     render() {
-        return h("button", { class: "solid-auth-login", onClick: () => solid.auth.popupLogin({ popupUri: this.popup }) }, "Log in");
+        return h("button", { class: "solid-auth-login", onClick: this.login }, "Log in");
     }
     static get is() { return "solid-login-popup"; }
     static get encapsulation() { return "shadow"; }
@@ -44,13 +71,23 @@ class LoginButton$1 {
             "attr": "popup"
         }
     }; }
+    static get events() { return [{
+            "name": "authenticated",
+            "method": "authenticated",
+            "bubbles": true,
+            "cancelable": true,
+            "composed": true
+        }]; }
     static get style() { return ""; }
 }
 
 /** Button that lets the user log in with Solid. */
-class LoginButton$2 {
-    logout() {
-        solid.auth.logout();
+class LogoutButton {
+    constructor() {
+        this.logout = async () => {
+            await solid.auth.logout();
+            this.authenticated.emit(null);
+        };
     }
     render() {
         return h("button", { class: "solid-auth-login", onClick: this.logout }, "Log out");
@@ -63,7 +100,14 @@ class LoginButton$2 {
             "attr": "popup"
         }
     }; }
+    static get events() { return [{
+            "name": "authenticated",
+            "method": "authenticated",
+            "bubbles": true,
+            "cancelable": true,
+            "composed": true
+        }]; }
     static get style() { return ""; }
 }
 
-export { LoginButton as SolidAuth, LoginButton$1 as SolidLoginPopup, LoginButton$2 as SolidLogoutPopup };
+export { AuthenticationButton as SolidAuth, LoginButton as SolidLoginPopup, LogoutButton as SolidLogoutPopup };
