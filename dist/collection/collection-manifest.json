@@ -53,6 +53,7 @@
     {
       "tag": "solid-auth",
       "dependencies": [
+        "solid-login-popup",
         "solid-logout-popup"
       ],
       "componentClass": "LoginButton",

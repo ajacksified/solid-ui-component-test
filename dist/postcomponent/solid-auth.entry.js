@@ -13,8 +13,8 @@ class LoginButton {
         });
     }
     render() {
-        return (h("div", null, this.webId && this.webId !== ''
-            ? h("solid-login-button", { popup: this.popup })
+        return (h("div", null, !this.webId
+            ? h("solid-login-popup", { popup: this.popup })
             : h("solid-logout-popup", null)));
     }
     static get is() { return "solid-auth"; }
@@ -33,6 +33,22 @@ class LoginButton {
 
 /** Button that lets the user log in with Solid. */
 class LoginButton$1 {
+    render() {
+        return h("button", { class: "solid-auth-login", onClick: () => solid.auth.popupLogin({ popupUri: this.popup }) }, "Log in");
+    }
+    static get is() { return "solid-login-popup"; }
+    static get encapsulation() { return "shadow"; }
+    static get properties() { return {
+        "popup": {
+            "type": String,
+            "attr": "popup"
+        }
+    }; }
+    static get style() { return ""; }
+}
+
+/** Button that lets the user log in with Solid. */
+class LoginButton$2 {
     logout() {
         solid.auth.logout();
     }
@@ -50,4 +66,4 @@ class LoginButton$1 {
     static get style() { return ""; }
 }
 
-export { LoginButton as SolidAuth, LoginButton$1 as SolidLogoutPopup };
+export { LoginButton as SolidAuth, LoginButton$1 as SolidLoginPopup, LoginButton$2 as SolidLogoutPopup };

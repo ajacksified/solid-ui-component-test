@@ -9,8 +9,8 @@ export class LoginButton {
         });
     }
     render() {
-        return (h("div", null, this.webId && this.webId !== ''
-            ? h("solid-login-button", { popup: this.popup })
+        return (h("div", null, !this.webId
+            ? h("solid-login-popup", { popup: this.popup })
             : h("solid-logout-popup", null)));
     }
     static get is() { return "solid-auth"; }

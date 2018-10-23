@@ -24,8 +24,8 @@ export class LoginButton {
   render() {
     return (
       <div>
-        {this.webId && this.webId !== ''
-          ? <solid-login-button popup={this.popup}></solid-login-button>
+        { !this.webId
+          ? <solid-login-popup popup={this.popup}></solid-login-popup>
           : <solid-logout-popup></solid-logout-popup>
         }
       </div>

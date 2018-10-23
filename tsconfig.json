@@ -8,12 +8,6 @@
       "dom",
       "es2017"
     ],
-    /* "paths": {
-      "TextEncoder": ["node_modules/text-encoding"],
-      "fetch": ["node_modules/isomorphic-fetch"],
-      "crypto": ["node_modules/@trust/webcrypto"],
-      "window": ["node_modules/whatwg-url"]
-    }, */
     "moduleResolution": "node",
     "module": "esnext",
     "target": "es2017",
@@ -21,7 +15,7 @@
     "noUnusedParameters": false,
     "jsx": "react",
     "jsxFactory": "h",
-    "baseUrl": ".",
+    "baseUrl": "."
   },
   "include": [
     "src",
