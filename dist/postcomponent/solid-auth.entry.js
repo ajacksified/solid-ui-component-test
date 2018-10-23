@@ -37,7 +37,7 @@ class LoginButton$1 {
         solid.auth.logout();
     }
     render() {
-        return h("button", { class: "solid-auth-login", onClick: this.logout }, "Log in");
+        return h("button", { class: "solid-auth-login", onClick: this.logout }, "Log out");
     }
     static get is() { return "solid-logout-popup"; }
     static get encapsulation() { return "shadow"; }

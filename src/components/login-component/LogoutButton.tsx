@@ -19,7 +19,7 @@ export class LoginButton {
   render() {
     return <button
       class="solid-auth-login"
-      onClick={this.logout}>Log in</button>;
+      onClick={this.logout}>Log out</button>;
   }
 }
 
