@@ -1,5 +1,139 @@
 /*!
  * Built with http://stenciljs.com
- * 2018-09-19T18:08:38
+ * 2018-09-22T22:01:23
  */
-!function(e,t,o,n,r,s,i,c,p,l,d,a,u,m){for((d=e.postcomponent=e.postcomponent||{}).components=p,(u=p.map(function(e){return e[0]})).length&&((a=t.createElement("style")).innerHTML=u.join()+"{visibility:hidden}.hydrated{visibility:inherit}",a.setAttribute("data-styles",""),u=t.head.querySelector("meta[charset]"),t.head.insertBefore(a,u?u.nextSibling:t.head.firstChild)),function(e,t,o){(e["s-apps"]=e["s-apps"]||[]).push("postcomponent"),o.componentOnReady||(o.componentOnReady=function(){var t=this;function o(o){if(t.nodeName.indexOf("-")>0){for(var n=e["s-apps"],r=0,s=0;s<n.length;s++)if(e[n[s]].componentOnReady){if(e[n[s]].componentOnReady(t,o))return;r++}if(r<n.length)return void(e["s-cr"]=e["s-cr"]||[]).push([t,o])}o(null)}return e.Promise?new e.Promise(o):{then:o}})}(e,0,l),r=r||d.resourcesUrl,a=(u=t.querySelectorAll("script")).length-1;a>=0&&!(m=u[a]).src&&!m.hasAttribute("data-resources-url");a--);u=m.getAttribute("data-resources-url"),!r&&u&&(r=u),!r&&m.src&&(r=(u=m.src.split("/").slice(0,-1)).join("/")+(u.length?"/":"")+"postcomponent/"),a=t.createElement("script"),function(e,t,o,n){return!(t.search.indexOf("core=esm")>0)&&(!(!(t.search.indexOf("core=es5")>0||"file:"===t.protocol)&&e.customElements&&e.customElements.define&&e.fetch&&e.CSS&&e.CSS.supports&&e.CSS.supports("color","var(--c)")&&"noModule"in o)||function(e){try{return new Function('import("")'),!1}catch(e){}return!0}())}(e,e.location,a)?a.src=r+"postcomponent.zetogee3.js":(a.src=r+"postcomponent.jim9v0wc.js",a.setAttribute("type","module"),a.setAttribute("crossorigin",!0)),a.setAttribute("data-resources-url",r),a.setAttribute("data-namespace","postcomponent"),t.head.appendChild(a)}(window,document,0,0,0,0,0,0,[["post-create","gw2rg5ij",1,[["webid",1,0,1,2]],1],["post-list","7vd3fvao",1,[["el",64],["postList",16],["webid",1,0,1,2]],1],["solid-form","9hzkhgwk",1],["solid-login","s8duycos",1,[["callback",1,0,1,2],["loginProvider",16]],1,[["providerChanged","providerChangedHandler"]]],["solid-login-popup","ic3avmmy",1,[["popup",1,0,1,2]],1],["solid-provider-select","s8duycos",1,[["selectedProvider",16]]]],HTMLElement.prototype);
+(function(win, doc, namespace, fsNamespace, resourcesUrl, appCore, appCoreSsr, appCorePolyfilled, hydratedCssClass, components) {
+
+  function init(win, doc, namespace, fsNamespace, resourcesUrl, appCore, appCorePolyfilled, hydratedCssClass, components, HTMLElementPrototype, App, x, y, scriptElm) {
+    // create global namespace if it doesn't already exist
+    App = win[namespace] = win[namespace] || {};
+    App.components = components;
+    y = components.map(function (c) { return c[0]; });
+    if (y.length) {
+        // auto hide components until they been fully hydrated
+        // reusing the "x" and "i" variables from the args for funzies
+        x = doc.createElement('style');
+        x.innerHTML = y.join() + '{visibility:hidden}.' + hydratedCssClass + '{visibility:inherit}';
+        x.setAttribute('data-styles', '');
+        y = doc.head.querySelector('meta[charset]');
+        doc.head.insertBefore(x, y ? y.nextSibling : doc.head.firstChild);
+    }
+    createComponentOnReadyPrototype(win, namespace, HTMLElementPrototype);
+    resourcesUrl = resourcesUrl || App.resourcesUrl;
+    // figure out the script element for this current script
+    y = doc.querySelectorAll('script');
+    for (x = y.length - 1; x >= 0; x--) {
+        scriptElm = y[x];
+        if (scriptElm.src || scriptElm.hasAttribute('data-resources-url')) {
+            break;
+        }
+    }
+    // get the resource path attribute on this script element
+    y = scriptElm.getAttribute('data-resources-url');
+    if (!resourcesUrl && y) {
+        // the script element has a data-resources-url attribute, always use that
+        resourcesUrl = y;
+    }
+    if (!resourcesUrl && scriptElm.src) {
+        // we don't have an exact resourcesUrl, so let's
+        // figure it out relative to this script's src and app's filesystem namespace
+        y = scriptElm.src.split('/').slice(0, -1);
+        resourcesUrl = (y.join('/')) + (y.length ? '/' : '') + fsNamespace + '/';
+    }
+    // request the core this browser needs
+    // test for native support of custom elements and fetch
+    // if either of those are not supported, then use the core w/ polyfills
+    // also check if the page was build with ssr or not
+    x = doc.createElement('script');
+    if (usePolyfills(win, win.location, x, 'import("")')) {
+        // requires the es5/polyfilled core
+        x.src = resourcesUrl + appCorePolyfilled;
+    }
+    else {
+        // let's do this!
+        x.src = resourcesUrl + appCore;
+        x.setAttribute('type', 'module');
+        x.setAttribute('crossorigin', true);
+    }
+    x.setAttribute('data-resources-url', resourcesUrl);
+    x.setAttribute('data-namespace', fsNamespace);
+    doc.head.appendChild(x);
+}
+function usePolyfills(win, location, scriptElm, dynamicImportTest) {
+    // fyi, dev mode has verbose if/return statements
+    // but it minifies to a nice 'lil one-liner ;)
+    if (location.search.indexOf('core=esm') > 0) {
+        // force esm build
+        return false;
+    }
+    if ((location.search.indexOf('core=es5') > 0) ||
+        (location.protocol === 'file:') ||
+        (!(win.customElements && win.customElements.define)) ||
+        (!win.fetch) ||
+        (!(win.CSS && win.CSS.supports && win.CSS.supports('color', 'var(--c)'))) ||
+        (!('noModule' in scriptElm))) {
+        // es5 build w/ polyfills
+        return true;
+    }
+    // final test to see if this browser support dynamic imports
+    return doesNotSupportsDynamicImports(dynamicImportTest);
+}
+function doesNotSupportsDynamicImports(dynamicImportTest) {
+    try {
+        new Function(dynamicImportTest);
+        return false;
+    }
+    catch (e) { }
+    return true;
+}
+function createComponentOnReadyPrototype(win, namespace, HTMLElementPrototype) {
+    (win['s-apps'] = win['s-apps'] || []).push(namespace);
+    if (!HTMLElementPrototype.componentOnReady) {
+        HTMLElementPrototype.componentOnReady = function componentOnReady() {
+            /*tslint:disable*/
+            var elm = this;
+            function executor(resolve) {
+                if (elm.nodeName.indexOf('-') > 0) {
+                    // window hasn't loaded yet and there's a
+                    // good chance this is a custom element
+                    var apps = win['s-apps'];
+                    var appsReady = 0;
+                    // loop through all the app namespaces
+                    for (var i = 0; i < apps.length; i++) {
+                        // see if this app has "componentOnReady" setup
+                        if (win[apps[i]].componentOnReady) {
+                            // this app's core has loaded call its "componentOnReady"
+                            if (win[apps[i]].componentOnReady(elm, resolve)) {
+                                // this component does belong to this app and would
+                                // have fired off the resolve fn
+                                // let's stop here, we're good
+                                return;
+                            }
+                            appsReady++;
+                        }
+                    }
+                    if (appsReady < apps.length) {
+                        // not all apps are ready yet
+                        // add it to the queue to be figured out when they are
+                        (win['s-cr'] = win['s-cr'] || []).push([elm, resolve]);
+                        return;
+                    }
+                }
+                // not a recognized app component
+                resolve(null);
+            }
+            // callback wasn't provided, let's return a promise
+            if (win.Promise) {
+                // use native/polyfilled promise
+                return new win.Promise(executor);
+            }
+            // promise may not have been polyfilled yet
+            return { then: executor };
+        };
+    }
+}
+
+
+  init(win, doc, namespace, fsNamespace, resourcesUrl, appCore, appCoreSsr, appCorePolyfilled, hydratedCssClass, components);
+
+  })(window, document, "postcomponent","postcomponent",0,"postcomponent.core.js","es5-build-disabled.js","hydrated",[["post-create","post-create",1,[["webid",1,0,1,2]],1],["post-list","post-list",1,[["el",64],["postList",16],["webid",1,0,1,2]],1],["solid-auth","solid-auth",1,[["popup",1,0,1,2],["webId",16]],1],["solid-form","solid-form",1],["solid-login","solid-login",1,[["callback",1,0,1,2],["loginProvider",16]],1,[["providerChanged","providerChangedHandler"]]],["solid-login-popup","solid-login-popup",1,[["popup",1,0,1,2]],1],["solid-logout-popup","solid-logout-popup",1,[["popup",1,0,1,2]],1],["solid-provider-select","solid-login",1,[["selectedProvider",16]]]],HTMLElement.prototype);

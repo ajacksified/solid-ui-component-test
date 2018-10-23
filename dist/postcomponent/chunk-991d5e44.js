@@ -1,5 +1,5 @@
 /*! Built with http://stenciljs.com */
-import { h } from '../postcomponent.core.js';
+const { h } = window.postcomponent;
 
 var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -39612,19 +39612,4 @@ if (typeof window !== 'undefined') {
   }
 }
 
-class LoginButton {
-    render() {
-        return h("button", { class: "solid-auth-login", onClick: () => lib$5.popupLogin({ popupUri: this.popup }) }, "Log in");
-    }
-    static get is() { return "solid-login-popup"; }
-    static get encapsulation() { return "shadow"; }
-    static get properties() { return {
-        "popup": {
-            "type": String,
-            "attr": "popup"
-        }
-    }; }
-    static get style() { return ""; }
-}
-
-export { LoginButton as SolidLoginPopup };
+export { lib$5 as a };

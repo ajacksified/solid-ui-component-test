@@ -14,7 +14,11 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "jsx": "react",
-    "jsxFactory": "h"
+    "jsxFactory": "h",
+    "baseUrl": ".",
+    "paths": {
+      "solid-auth-client":  ["src/assets/solid-auth-client.bundle.js"]
+    }
   },
   "include": [
     "src",

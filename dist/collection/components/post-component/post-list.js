@@ -1,5 +1,7 @@
+// @ts-ignore
 const store = $rdf.graph();
 const fetcher = new $rdf.Fetcher(store);
+// @ts-ignore
 const VCARD = $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
 const SIOC = $rdf.Namespace("http://rdfs.org/sioc/ns#");
 const LDP = $rdf.Namespace("http://www.w3.org/ns/ldp#");
@@ -26,6 +28,7 @@ export class PostListComponent {
         fetcher.load(this.postFolder, { force: true }).then(() => {
             let posts = store.each($rdf.sym(this.postFolder), LDP('contains'));
             this.postList = [];
+            //format post list
             posts.forEach(async (post) => {
                 let postUrl = $rdf.sym(post.value + '#Post');
                 let authorUrl = $rdf.sym(post.value + '#author');

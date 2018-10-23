@@ -1,8 +1,10 @@
 /*! Built with http://stenciljs.com */
-import { h } from '../postcomponent.core.js';
+const { h } = window.postcomponent;
 
+// @ts-ignore
 const store = $rdf.graph();
 const fetcher = new $rdf.Fetcher(store);
+// @ts-ignore
 const VCARD = $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
 const SIOC = $rdf.Namespace("http://rdfs.org/sioc/ns#");
 const LDP = $rdf.Namespace("http://www.w3.org/ns/ldp#");
@@ -29,6 +31,7 @@ class PostListComponent {
         fetcher.load(this.postFolder, { force: true }).then(() => {
             let posts = store.each($rdf.sym(this.postFolder), LDP('contains'));
             this.postList = [];
+            //format post list
             posts.forEach(async (post) => {
                 let postUrl = $rdf.sym(post.value + '#Post');
                 let authorUrl = $rdf.sym(post.value + '#author');
@@ -69,7 +72,7 @@ class PostListComponent {
             "attr": "webid"
         }
     }; }
-    static get style() { return ".profile-image{width:50px}.new-post{max-width:200px;position:absolute;margin-left:10px}.new-post h2{color:#555;margin-bottom:6px}.new-post-form-input{width:200px;height:50px;border-radius:8px;margin-top:10px;border-color:#ccc}.post-list{margin:10px;color:#555;font-family:sans-serif}.post-list h3{text-decoration:underline;text-transform:uppercase;font-size:18px}.post-list-item{width:400px;height:100px;overflow:auto;border:1px solid #ccc;padding:4px;margin-bottom:12px}.post-list-item-name{font-size:16px;margin:8px 4px}.post-list-item-image{float:left;margin-right:14px;margin-left:10px}.post-list-item-text{font-size:12px;color:#333}.post-button{background-color:#7c4dff;color:#fff;padding:6px 24px;cursor:pointer;border-radius:14px;margin-top:4px}"; }
+    static get style() { return ".profile-image {\n  width: 50px;\n}\n\n.new-post {\n  max-width: 200px;\n  position:absolute;\n  margin-left: 10px;\n}\n\n.new-post h2 {\n  color: #555;\n  margin-bottom: 6px;\n}\n\n.new-post-form-input {\n  width: 200px;\n  height: 50px;\n  border-radius: 8px;\n  margin-top: 10px;\n  border-color: #ccc;\n}\n\n.post-list {\n  margin: 10px;\n  color: #555;\n  font-family: sans-serif;\n}\n\n.post-list h3 {\n  text-decoration: underline;\n  text-transform: uppercase;\n  font-size: 18px;\n}\n\n.post-list-item {\n  width: 400px;\n  height: 100px;\n  overflow: auto;\n  border: solid 1px #ccc;\n  padding: 4px;\n  margin-bottom: 12px;\n}\n\n.post-list-item-name {\n  font-size: 16px;\n  margin: 8px 4px;\n}\n\n.post-list-item-image {\n  float: left;\n  margin-right: 14px;\n  margin-left: 10px;\n}\n\n.post-list-item-text {\n  font-size: 12px;\n  color: #333;\n}\n\n.post-button {\n  background-color: #7C4DFF;\n  color: white;\n  padding: 6px 24px;\n  cursor: pointer;\n  border-radius: 14px;\n  margin-top: 4px;\n}"; }
 }
 
 export { PostListComponent as PostList };

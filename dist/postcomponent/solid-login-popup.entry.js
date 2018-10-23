@@ -1,6 +1,10 @@
-import auth from 'solid-auth-client';
+/*! Built with http://stenciljs.com */
+const { h } = window.postcomponent;
+
+import { a as auth } from './chunk-991d5e44.js';
+
 /** Button that lets the user log in with Solid. */
-export class LoginButton {
+class LoginButton {
     render() {
         return h("button", { class: "solid-auth-login", onClick: () => auth.popupLogin({ popupUri: this.popup }) }, "Log in");
     }
@@ -12,5 +16,7 @@ export class LoginButton {
             "attr": "popup"
         }
     }; }
-    static get style() { return "/**style-placeholder:solid-login-popup:**/"; }
+    static get style() { return ""; }
 }
+
+export { LoginButton as SolidLoginPopup };

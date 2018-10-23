@@ -1,3 +1,4 @@
+// @ts-ignore
 const store = $rdf.graph();
 const fetcher = new $rdf.Fetcher(store);
 const providerList = [
@@ -19,6 +20,7 @@ const providerList = [
         value: 0
     }
 ];
+// @ts-ignore
 export class ProviderSelectComponent {
     componentDidLoad() {
     }
@@ -30,6 +32,7 @@ export class ProviderSelectComponent {
     customProviderChanged() {
         this.providerChanged.emit(this.customProvider);
     }
+    //ToDo: Figure out why null value wasn't working for the "custom" provider
     render() {
         return h("div", null,
             h("select", { onInput: (event) => this.handleChange(event) },

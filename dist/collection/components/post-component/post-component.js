@@ -1,5 +1,7 @@
+// @ts-ignore
 const store = $rdf.graph();
 const fetcher = new $rdf.Fetcher(store);
+// @ts-ignore
 const RDF = $rdf.Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#");
 const DCT = $rdf.Namespace("http://purl.org/dc/terms/");
 const VCARD = $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
@@ -12,6 +14,7 @@ export class PostComponent {
             const root = this.webid.substring(0, this.webid.length - 15);
             let rootDirectory = root + 'public';
             let postDirectory = rootDirectory + '/posts';
+            // Step 1: Check if posts container exists
             fetch(postDirectory, {
                 method: 'GET'
             }).then(async (response) => {
@@ -42,6 +45,7 @@ export class PostComponent {
             postData.push($rdf.st(newPostUrl, SIOC('content'), $rdf.lit(this.postText.value.trim()), why));
             postData.push($rdf.st(newPostUrl, SIOC('has_creator'), authorLink, why));
             postData.push($rdf.st(newPostUrl, DCT('created'), $rdf.lit(new Date()), why));
+            //postData.push($rdf.st(uniquePostIdentifier, SIOC('Post'), newPostUrl, why));
             console.log(this.profile);
             if (this.profile) {
                 console.log('New author info');
@@ -66,6 +70,7 @@ export class PostComponent {
     async componentDidLoad() {
         await this.getProfile(this.webid);
         this.profile.name = store.any($rdf.sym(this.webid), VCARD('fn'));
+        //TODO: This sucks
         let defaultImageUrl = window.location.protocol + '//' + window.location.host + '/assets/images/profile.png';
         this.profile.image = store.any($rdf.sym(this.webid), VCARD('hasPhoto')) || $rdf.sym(defaultImageUrl);
     }

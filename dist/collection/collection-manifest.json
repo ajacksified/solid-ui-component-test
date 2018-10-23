@@ -51,6 +51,32 @@
       "shadow": true
     },
     {
+      "tag": "solid-auth",
+      "dependencies": [],
+      "componentClass": "LoginButton",
+      "componentPath": "components/login-component/AuthComponent.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/login-component/login-component.css"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "popup",
+          "type": "String",
+          "attr": "popup"
+        }
+      ],
+      "states": [
+        {
+          "name": "webId"
+        }
+      ],
+      "shadow": true
+    },
+    {
       "tag": "solid-form",
       "dependencies": [],
       "componentClass": "SolidFormPaneComponent",
@@ -104,6 +130,27 @@
       "dependencies": [],
       "componentClass": "LoginButton",
       "componentPath": "components/login-component/LoginButton.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/login-component/login-component.css"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "popup",
+          "type": "String",
+          "attr": "popup"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "solid-logout-popup",
+      "dependencies": [],
+      "componentClass": "LoginButton",
+      "componentPath": "components/login-component/LogoutButton.js",
       "styles": {
         "$": {
           "stylePaths": [

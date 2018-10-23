@@ -1,10 +1,13 @@
 import auth from 'solid-auth-client';
 /** Button that lets the user log in with Solid. */
 export class LoginButton {
-    render() {
-        return h("button", { class: "solid-auth-login", onClick: () => auth.popupLogin({ popupUri: this.popup }) }, "Log in");
+    logout() {
+        auth.logout();
     }
-    static get is() { return "solid-login-popup"; }
+    render() {
+        return h("button", { class: "solid-auth-login", onClick: this.logout }, "Log in");
+    }
+    static get is() { return "solid-logout-popup"; }
     static get encapsulation() { return "shadow"; }
     static get properties() { return {
         "popup": {
@@ -12,5 +15,5 @@ export class LoginButton {
             "attr": "popup"
         }
     }; }
-    static get style() { return "/**style-placeholder:solid-login-popup:**/"; }
+    static get style() { return "/**style-placeholder:solid-logout-popup:**/"; }
 }

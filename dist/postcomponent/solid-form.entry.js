@@ -1,10 +1,14 @@
 /*! Built with http://stenciljs.com */
-import { h } from '../postcomponent.core.js';
+const { h } = window.postcomponent;
 
+//declare let UI: any;
+// @ts-ignore
 const store = $rdf.graph();
 const fetcher = new $rdf.Fetcher(store);
+// @ts-ignore
 class SolidFormPaneComponent {
     componentDidLoad() {
+        //console.log(UI.store);
     }
     render() {
         return h("div", null);

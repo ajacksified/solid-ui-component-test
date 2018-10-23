@@ -1,7 +1,10 @@
 import {Component, Event, State} from '@stencil/core';
+//import * as UI from 'solid-ui';
 
 // @ts-ignore
 declare let $rdf: any;
+//declare let UI: any;
+
 // @ts-ignore
 const store  = $rdf.graph();
 const fetcher = new $rdf.Fetcher(store);
@@ -16,6 +19,7 @@ const fetcher = new $rdf.Fetcher(store);
 export class SolidFormPaneComponent {
 
   componentDidLoad() {
+    //console.log(UI.store);
   }
 
   render() {

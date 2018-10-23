@@ -12,10 +12,24 @@ import './stencil.core';
 
 export namespace Components {
 
+  interface SolidAuth {
+    'popup': string;
+  }
+  interface SolidAuthAttributes extends StencilHTMLAttributes {
+    'popup'?: string;
+  }
+
   interface SolidLoginPopup {
     'popup': string;
   }
   interface SolidLoginPopupAttributes extends StencilHTMLAttributes {
+    'popup'?: string;
+  }
+
+  interface SolidLogoutPopup {
+    'popup': string;
+  }
+  interface SolidLogoutPopupAttributes extends StencilHTMLAttributes {
     'popup'?: string;
   }
 
@@ -51,7 +65,9 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
+    'SolidAuth': Components.SolidAuth;
     'SolidLoginPopup': Components.SolidLoginPopup;
+    'SolidLogoutPopup': Components.SolidLogoutPopup;
     'SolidLogin': Components.SolidLogin;
     'SolidProviderSelect': Components.SolidProviderSelect;
     'SolidForm': Components.SolidForm;
@@ -60,7 +76,9 @@ declare global {
   }
 
   interface StencilIntrinsicElements {
+    'solid-auth': Components.SolidAuthAttributes;
     'solid-login-popup': Components.SolidLoginPopupAttributes;
+    'solid-logout-popup': Components.SolidLogoutPopupAttributes;
     'solid-login': Components.SolidLoginAttributes;
     'solid-provider-select': Components.SolidProviderSelectAttributes;
     'solid-form': Components.SolidFormAttributes;
@@ -69,10 +87,22 @@ declare global {
   }
 
 
+  interface HTMLSolidAuthElement extends Components.SolidAuth, HTMLStencilElement {}
+  var HTMLSolidAuthElement: {
+    prototype: HTMLSolidAuthElement;
+    new (): HTMLSolidAuthElement;
+  };
+
   interface HTMLSolidLoginPopupElement extends Components.SolidLoginPopup, HTMLStencilElement {}
   var HTMLSolidLoginPopupElement: {
     prototype: HTMLSolidLoginPopupElement;
     new (): HTMLSolidLoginPopupElement;
+  };
+
+  interface HTMLSolidLogoutPopupElement extends Components.SolidLogoutPopup, HTMLStencilElement {}
+  var HTMLSolidLogoutPopupElement: {
+    prototype: HTMLSolidLogoutPopupElement;
+    new (): HTMLSolidLogoutPopupElement;
   };
 
   interface HTMLSolidLoginElement extends Components.SolidLogin, HTMLStencilElement {}
@@ -106,7 +136,9 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
+    'solid-auth': HTMLSolidAuthElement
     'solid-login-popup': HTMLSolidLoginPopupElement
+    'solid-logout-popup': HTMLSolidLogoutPopupElement
     'solid-login': HTMLSolidLoginElement
     'solid-provider-select': HTMLSolidProviderSelectElement
     'solid-form': HTMLSolidFormElement
@@ -115,7 +147,9 @@ declare global {
   }
 
   interface ElementTagNameMap {
+    'solid-auth': HTMLSolidAuthElement;
     'solid-login-popup': HTMLSolidLoginPopupElement;
+    'solid-logout-popup': HTMLSolidLogoutPopupElement;
     'solid-login': HTMLSolidLoginElement;
     'solid-provider-select': HTMLSolidProviderSelectElement;
     'solid-form': HTMLSolidFormElement;
