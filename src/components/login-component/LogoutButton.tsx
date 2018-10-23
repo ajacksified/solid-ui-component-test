@@ -1,5 +1,7 @@
-import auth from 'solid-auth-client';
+import  'solidAuth';
 import {Component, Prop} from "@stencil/core";
+// @ts-ignore
+declare let solid: any;
 
 /** Button that lets the user log in with Solid. */
 @Component({
@@ -11,7 +13,7 @@ export class LoginButton {
   @Prop() popup: string;
 
   logout() {
-    auth.logout();
+    solid.auth.logout();
   }
 
   render() {

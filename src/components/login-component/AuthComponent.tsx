@@ -1,5 +1,7 @@
-import auth from 'solid-auth-client';
+import  'solidAuth';
 import {Component, Prop, State} from "@stencil/core";
+// @ts-ignore
+declare let solid: any;
 
 /** Button that lets the user log in with Solid. */
 @Component({
@@ -12,7 +14,7 @@ export class LoginButton {
   @State() webId: string;
 
   componentWillLoad() {
-    auth.trackSession(session => {
+    solid.auth.trackSession(session => {
       if(session) {
         this.webId = session.webId;
       }
@@ -24,7 +26,7 @@ export class LoginButton {
       <div>
         {this.webId && this.webId !== ''
           ? <solid-login-button popup={this.popup}></solid-login-button>
-          : <solid-logout-button></solid-logout-button>
+          : <solid-logout-popup></solid-logout-popup>
         }
       </div>
     );

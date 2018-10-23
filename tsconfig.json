@@ -8,6 +8,12 @@
       "dom",
       "es2017"
     ],
+    "paths": {
+      "TextEncoder": ["node_modules/text-encoding"],
+      "fetch": ["node_modules/isomorphic-fetch"],
+      "crypto": ["node_modules/@trust/webcrypto"],
+      "window": ["node_modules/whatwg-url"]
+    },
     "moduleResolution": "node",
     "module": "esnext",
     "target": "es2017",
@@ -16,16 +22,13 @@
     "jsx": "react",
     "jsxFactory": "h",
     "baseUrl": ".",
-    "paths": {
-      "solid-auth-client":  ["src/assets/solid-auth-client.bundle.js"]
-    }
   },
   "include": [
     "src",
     "types/jsx.d.ts",
-    "src/assets/rdflib.min.js"
+    "node_modules/rdflib/dist/rdflib.min.js"
   ],
   "exclude": [
-    "node_modules"
+    // "node_modules"
   ]
 }

@@ -1,6 +1,7 @@
-import auth from 'solid-auth-client';
+import  'solidAuth'; 
 import {Component, Prop} from "@stencil/core";
-
+// @ts-ignore
+declare let solid: any;
 /** Button that lets the user log in with Solid. */
 @Component({
   tag: 'solid-login-popup',
@@ -13,7 +14,7 @@ export class LoginButton {
   render() {
     return <button
       class="solid-auth-login"
-      onClick={() => auth.popupLogin({ popupUri: this.popup })}>Log in</button>;
+      onClick={() => solid.auth.popupLogin({ popupUri: this.popup })}>Log in</button>;
   }
 }
 
