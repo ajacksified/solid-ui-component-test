@@ -1,3 +1,4 @@
+import  'solidAuth';
 import {Component, Prop, State, Element, Listen} from '@stencil/core';
 //import auth from 'solid-auth-client';
 // @ts-ignore

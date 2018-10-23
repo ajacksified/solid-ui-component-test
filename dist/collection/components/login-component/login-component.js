@@ -1,3 +1,4 @@
+import 'solidAuth';
 export class LoginComponent {
     providerChangedHandler(event) {
         console.log(event.detail);

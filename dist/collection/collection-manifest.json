@@ -52,7 +52,9 @@
     },
     {
       "tag": "solid-auth",
-      "dependencies": [],
+      "dependencies": [
+        "solid-logout-popup"
+      ],
       "componentClass": "LoginButton",
       "componentPath": "components/login-component/AuthComponent.js",
       "styles": {

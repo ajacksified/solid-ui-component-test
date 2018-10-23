@@ -1,6 +1,8 @@
 /*! Built with http://stenciljs.com */
 const { h } = window.postcomponent;
 
+import './chunk-04f63265.js';
+
 class LoginComponent {
     providerChangedHandler(event) {
         console.log(event.detail);

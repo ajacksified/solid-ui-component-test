@@ -1,4 +1,5 @@
 import '../../stencil.core';
+import 'solidAuth';
 export declare class LoginComponent {
     loginProvider: string;
     callback: string;

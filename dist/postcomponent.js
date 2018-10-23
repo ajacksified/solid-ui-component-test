@@ -1,6 +1,6 @@
 /*!
  * Built with http://stenciljs.com
- * 2018-09-22T22:01:23
+ * 2018-09-23T14:03:48
  */
 (function(win, doc, namespace, fsNamespace, resourcesUrl, appCore, appCoreSsr, appCorePolyfilled, hydratedCssClass, components) {
 
@@ -136,4 +136,4 @@ function createComponentOnReadyPrototype(win, namespace, HTMLElementPrototype) {
 
   init(win, doc, namespace, fsNamespace, resourcesUrl, appCore, appCoreSsr, appCorePolyfilled, hydratedCssClass, components);
 
-  })(window, document, "postcomponent","postcomponent",0,"postcomponent.core.js","es5-build-disabled.js","hydrated",[["post-create","post-create",1,[["webid",1,0,1,2]],1],["post-list","post-list",1,[["el",64],["postList",16],["webid",1,0,1,2]],1],["solid-auth","solid-auth",1,[["popup",1,0,1,2],["webId",16]],1],["solid-form","solid-form",1],["solid-login","solid-login",1,[["callback",1,0,1,2],["loginProvider",16]],1,[["providerChanged","providerChangedHandler"]]],["solid-login-popup","solid-login-popup",1,[["popup",1,0,1,2]],1],["solid-logout-popup","solid-logout-popup",1,[["popup",1,0,1,2]],1],["solid-provider-select","solid-login",1,[["selectedProvider",16]]]],HTMLElement.prototype);
+  })(window, document, "postcomponent","postcomponent",0,"postcomponent.core.js","es5-build-disabled.js","hydrated",[["post-create","post-create",1,[["webid",1,0,1,2]],1],["post-list","post-list",1,[["el",64],["postList",16],["webid",1,0,1,2]],1],["solid-auth","solid-auth",1,[["popup",1,0,1,2],["webId",16]],1],["solid-form","solid-form",1],["solid-login","solid-login",1,[["callback",1,0,1,2],["loginProvider",16]],1,[["providerChanged","providerChangedHandler"]]],["solid-login-popup","solid-login-popup",1,[["popup",1,0,1,2]],1],["solid-logout-popup","solid-auth",1,[["popup",1,0,1,2]],1],["solid-provider-select","solid-login",1,[["selectedProvider",16]]]],HTMLElement.prototype);

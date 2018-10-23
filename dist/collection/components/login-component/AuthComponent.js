@@ -1,8 +1,8 @@
-import auth from 'solid-auth-client';
+import 'solidAuth';
 /** Button that lets the user log in with Solid. */
 export class LoginButton {
     componentWillLoad() {
-        auth.trackSession(session => {
+        solid.auth.trackSession(session => {
             if (session) {
                 this.webId = session.webId;
             }
@@ -11,7 +11,7 @@ export class LoginButton {
     render() {
         return (h("div", null, this.webId && this.webId !== ''
             ? h("solid-login-button", { popup: this.popup })
-            : h("solid-logout-button", null)));
+            : h("solid-logout-popup", null)));
     }
     static get is() { return "solid-auth"; }
     static get encapsulation() { return "shadow"; }
