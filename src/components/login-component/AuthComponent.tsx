@@ -20,8 +20,6 @@ export class AuthenticationButton {
 
   @Listen('authenticated')
   authenticationChanged(webId) {
-    console.log(webId.detail);
-
     this.webId = webId.detail;
   }
 
