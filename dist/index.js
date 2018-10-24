@@ -1,1 +1,0 @@
-// postcomponent: CommonJS Main
