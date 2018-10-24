@@ -1,5 +1,8 @@
 import { Config } from '@stencil/core';
-import alias from 'rollup-plugin-alias';
+import copy from 'rollup-plugin-copy-glob';
+import externalGlobals from 'rollup-plugin-external-globals';
+
+const solidAuthClient = 'solid-auth-client/dist-lib/solid-auth-client.bundle.js';
 
 export const config: Config = {
   namespace: 'postcomponent',
@@ -12,8 +15,14 @@ export const config: Config = {
       serviceWorker: null
     }
   ],
-  plugins: [alias({
-    solidAuth : 'node_modules/solid-auth-client/dist-lib/solid-auth-client.bundle.js',
-  })],
-
+  hashFileNames: false,
+  plugins: [
+    copy([
+      { files: `${require.resolve(solidAuthClient)}*`, dest: 'dist' },
+      { files: `${require.resolve(solidAuthClient)}*`, dest: 'www/assets' },
+    ]),
+    externalGlobals({
+      'solid-auth-client': 'solid.auth',
+    })
+  ],
 };
