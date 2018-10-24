@@ -1,6 +1,6 @@
 import  'solidAuth';
-import {Component, Listen, State} from "@stencil/core";
-import {AuthService} from '../../services/auth.service';
+import {Component, EventEmitter, Listen, State, Event} from "@stencil/core";
+import AuthService from '../../services/auth.service';
 // @ts-ignore
 
 /** Button that lets the user log in with Solid. */
@@ -14,13 +14,13 @@ export class AuthenticationButton {
   @State() webId: string;
 
   async componentWillLoad() {
-    this.webId = await AuthService.getWebId();
+     this.webId = await AuthService.getWebId();
      this.popup = '/assets/popup.html';
-  }
 
-  @Listen('authenticated')
-  authenticationChanged(webId) {
-    this.webId = webId.detail;
+     //If there's a webID, we logged in. If there's not a webID, we logged out.
+     AuthService._authentication.subscribe((pos) => {
+       this.webId = pos ? pos.webId : null;
+     })
   }
 
   render() {

@@ -27,7 +27,6 @@ export namespace Components {
     'popup': string;
   }
   interface SolidLogoutPopupAttributes extends StencilHTMLAttributes {
-    'onAuthenticated'?: (event: CustomEvent) => void;
     'popup'?: string;
   }
 

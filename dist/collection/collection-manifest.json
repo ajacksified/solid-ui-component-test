@@ -73,14 +73,6 @@
           "name": "webId"
         }
       ],
-      "listeners": [
-        {
-          "event": "authenticated",
-          "method": "authenticationChanged",
-          "passive": false,
-          "capture": false
-        }
-      ],
       "shadow": true
     },
     {
@@ -175,11 +167,6 @@
           "name": "popup",
           "type": "String",
           "attr": "popup"
-        }
-      ],
-      "events": [
-        {
-          "event": "authenticated"
         }
       ],
       "shadow": true

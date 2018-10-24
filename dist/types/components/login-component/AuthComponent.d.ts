@@ -5,6 +5,5 @@ export declare class AuthenticationButton {
     popup: string;
     webId: string;
     componentWillLoad(): Promise<void>;
-    authenticationChanged(webId: any): void;
     render(): JSX.Element;
 }
