@@ -1,4 +1,3 @@
-import  'solidAuth';
 import {Component, Prop} from "@stencil/core";
 import AuthService from "../../services/auth.service";
 
