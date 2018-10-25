@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Prop, Event} from "@stencil/core";
-import AuthService from '../../services/auth.service';
+import {Component,Prop} from "@stencil/core";
+import auth from 'solid-auth-client';
 
 /** Button that lets the user log in with Solid. */
 @Component({
@@ -9,10 +9,9 @@ import AuthService from '../../services/auth.service';
 })
 export class LoginButton {
   @Prop() popup: string;
-  @Event() authenticated: EventEmitter;
 
   login = async() => {
-    await AuthService.login(this.popup);
+    auth.popupLogin({popupUri: this.popup});
   };
 
   render() {
@@ -21,4 +20,3 @@ export class LoginButton {
       onClick={this.login}>Log in</button>;
   }
 }
-

@@ -1,5 +1,5 @@
 import {Component, Prop} from "@stencil/core";
-import AuthService from "../../services/auth.service";
+import auth from 'solid-auth-client';
 
 /** Button that lets the user log in with Solid. */
 @Component({
@@ -11,7 +11,7 @@ export class LogoutButton {
   @Prop() popup: string;
 
   logout = async () => {
-    AuthService.logout();
+    auth.logout();
   };
 
   render() {
