@@ -1,7 +1,5 @@
-import 'solidAuth';
 import {BehaviorSubject, from, Observable} from 'rxjs';
-
-declare let solid;
+import auth from 'solid-auth-client';
 
 class AuthService {
 
@@ -13,24 +11,24 @@ class AuthService {
   }
 
   public isAuthenticated = async () => {
-    const session = await solid.auth.currentSession();
+    const session = await auth.currentSession();
     return !!session;
   };
 
   public getWebId = async () => {
-    const session = await solid.auth.currentSession();
+    const session = await auth.currentSession();
     if(!session) return null;
     return session.webId || null;
   };
 
   public async login (popup) {
-    let value = await solid.auth.popupLogin({popupUri: popup});
+    let value = await auth.popupLogin({popupUri: popup});
     console.log(value);
     this._authentication.next(value);
   };
 
   public logout = async() => {
-    await solid.auth.logout();
+    await auth.logout();
     this._authentication.next(null);
   };
 }

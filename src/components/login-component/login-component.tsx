@@ -1,6 +1,5 @@
-import  'solidAuth';
 import {Component, Prop, State, Element, Listen} from '@stencil/core';
-//import auth from 'solid-auth-client';
+import auth from 'solid-auth-client';
 // @ts-ignore
 declare let solid: any;
 
@@ -30,7 +29,7 @@ export class LoginComponent {
         if(this.callback) {
           config.callbackUri = this.callback;
         }
-        await solid.auth.login(this.loginProvider, config);
+        await auth.login(this.loginProvider, config);
       } catch (err) {
         console.log(err);
       }

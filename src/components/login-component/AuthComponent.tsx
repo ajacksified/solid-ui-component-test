@@ -1,4 +1,3 @@
-import  'solidAuth';
 import {Component, EventEmitter, Listen, State, Event} from "@stencil/core";
 import AuthService from '../../services/auth.service';
 // @ts-ignore
