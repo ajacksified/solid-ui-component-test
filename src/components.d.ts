@@ -12,6 +12,16 @@ import '@stencil/core';
 
 export namespace Components {
 
+  interface SolidChatLoggedOut {}
+  interface SolidChatLoggedOutAttributes extends StencilHTMLAttributes {}
+
+  interface SolidChat {
+    'channel': string;
+  }
+  interface SolidChatAttributes extends StencilHTMLAttributes {
+    'channel'?: string;
+  }
+
   interface SolidAuth {
     'popup': string;
   }
@@ -65,6 +75,8 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
+    'SolidChatLoggedOut': Components.SolidChatLoggedOut;
+    'SolidChat': Components.SolidChat;
     'SolidAuth': Components.SolidAuth;
     'SolidLoginPopup': Components.SolidLoginPopup;
     'SolidLogoutPopup': Components.SolidLogoutPopup;
@@ -76,6 +88,8 @@ declare global {
   }
 
   interface StencilIntrinsicElements {
+    'solid-chat-logged-out': Components.SolidChatLoggedOutAttributes;
+    'solid-chat': Components.SolidChatAttributes;
     'solid-auth': Components.SolidAuthAttributes;
     'solid-login-popup': Components.SolidLoginPopupAttributes;
     'solid-logout-popup': Components.SolidLogoutPopupAttributes;
@@ -86,6 +100,18 @@ declare global {
     'post-list': Components.PostListAttributes;
   }
 
+
+  interface HTMLSolidChatLoggedOutElement extends Components.SolidChatLoggedOut, HTMLStencilElement {}
+  var HTMLSolidChatLoggedOutElement: {
+    prototype: HTMLSolidChatLoggedOutElement;
+    new (): HTMLSolidChatLoggedOutElement;
+  };
+
+  interface HTMLSolidChatElement extends Components.SolidChat, HTMLStencilElement {}
+  var HTMLSolidChatElement: {
+    prototype: HTMLSolidChatElement;
+    new (): HTMLSolidChatElement;
+  };
 
   interface HTMLSolidAuthElement extends Components.SolidAuth, HTMLStencilElement {}
   var HTMLSolidAuthElement: {
@@ -136,6 +162,8 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
+    'solid-chat-logged-out': HTMLSolidChatLoggedOutElement
+    'solid-chat': HTMLSolidChatElement
     'solid-auth': HTMLSolidAuthElement
     'solid-login-popup': HTMLSolidLoginPopupElement
     'solid-logout-popup': HTMLSolidLogoutPopupElement
@@ -147,6 +175,8 @@ declare global {
   }
 
   interface ElementTagNameMap {
+    'solid-chat-logged-out': HTMLSolidChatLoggedOutElement;
+    'solid-chat': HTMLSolidChatElement;
     'solid-auth': HTMLSolidAuthElement;
     'solid-login-popup': HTMLSolidLoginPopupElement;
     'solid-logout-popup': HTMLSolidLogoutPopupElement;

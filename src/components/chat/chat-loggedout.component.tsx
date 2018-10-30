@@ -4,12 +4,10 @@ import WebIdService from '../../services/webId.service';
 
 /** Button that lets the user log in with Solid. */
 @Component({
-  tag: 'solid-auth',
-  shadow: true
+  tag: 'solid-chat-logged-out',
+  shadow: false
 })
-export class AuthenticationButton {
-  @Prop() popup: string;
-  @State() webId: string;
+export class SolidChatLoggedOutComponent {
 
   componentWillLoad() {
     WebIdService.track(this);
@@ -21,12 +19,14 @@ export class AuthenticationButton {
 
   render() {
     return (
-      <div>
-        { !this.webId
-          ? <solid-login-popup popup={this.popup}></solid-login-popup>
-          : <solid-logout-popup></solid-logout-popup>
-        }
-      </div>
+     <div>
+       <div>
+          You are logged out. Please log in to continue.
+       </div>
+       <div>
+         <solid-login></solid-login>
+       </div>
+     </div>
     );
   }
 }

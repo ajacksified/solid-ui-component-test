@@ -5,7 +5,7 @@ import auth from 'solid-auth-client';
 @Component({
   tag: 'solid-logout-popup',
   styleUrl: 'login-component.css',
-  shadow: true
+  shadow: false
 })
 export class LogoutButton {
   @Prop() popup: string;
@@ -16,7 +16,7 @@ export class LogoutButton {
 
   render() {
     return <button
-      class="solid-auth-login"
+      class="solid-auth-button"
       onClick={this.logout}>Log out</button>;
   }
 }

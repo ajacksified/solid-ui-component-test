@@ -5,7 +5,7 @@ import auth from 'solid-auth-client';
 @Component({
   tag: 'solid-login-popup',
   styleUrl: 'login-component.css',
-  shadow: true
+  shadow: false
 })
 export class LoginButton {
   @Prop() popup: string;
@@ -16,7 +16,7 @@ export class LoginButton {
 
   render() {
     return <button
-      class="solid-auth-login"
+      class="solid-auth-button"
       onClick={this.login}>Log in</button>;
   }
 }
